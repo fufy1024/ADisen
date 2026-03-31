@@ -11,3 +11,47 @@ which explicitly models the associated interaction and step-wise dynamic disenta
  ![teaser](assets/fig-1-0105.jpg)
 
  ![teaser](assets/fig2-0914.jpg)
+
+## ✨ News ✨
+- [2026/03/31]  We release the code for LayerEdit! Let's edit together! 🎉 🎉
+
+## TODO List 📅
+- [x] Release environment setup
+- [x] Release training and inference code on SDXL backbone
+- [ ] Release training and inference code on FLUX backbone
+
+## ⚡️ Quick Start
+
+### 🔧 Requirements and Installation
+
+Install the requirements
+```bash
+conda create -n ADisen python=3.10.12
+conda activate ADisen
+pip install -r requirements.txt
+accelerate config
+
+### ✍️ Editing a image
+
+export MODEL_NAME="stabilityai/stable-diffusion-xl-base-1.0"
+accelerate launch src/diffusers_data_pipeline_my_sdxl.py \
+          --pretrained_model_name_or_path=$MODEL_NAME  \
+          --instance_data_dir=/home/fufy/image-editing/datasets/paper-test-img/gen_project/cat2.jpg   \
+          --output_dir=./logs_try_cat_0314 \
+          --real_prior --prior_loss_weight=1.0 \
+          --instance_prompt="photo of a cat"  \
+          --class_prompt="cat" \
+          --resolution=1024  \
+          --train_batch_size=1  \
+          --learning_rate=1e-5  \
+          --lr_warmup_steps=0 \
+          --inner_steps=30 \
+          --ddim_steps=30 \
+          --num_class_images=200 \
+          --scale_lr    \
+          --FT_KV \
+          --FT_out \
+          --NA_pro \
+          --Attn_loss_pro \
+          --Img_Emb_pro 'type2-2-vgg-sum' \
+ 
