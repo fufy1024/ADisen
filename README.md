@@ -30,9 +30,10 @@ conda create -n ADisen python=3.10.12
 conda activate ADisen
 pip install -r requirements.txt
 accelerate config
+```
 
 ### ✍️ Editing a image
-
+```bash
 export MODEL_NAME="stabilityai/stable-diffusion-xl-base-1.0"
 accelerate launch src/diffusers_data_pipeline_my_sdxl.py \
           --pretrained_model_name_or_path=$MODEL_NAME  \
@@ -54,4 +55,14 @@ accelerate launch src/diffusers_data_pipeline_my_sdxl.py \
           --NA_pro \
           --Attn_loss_pro \
           --Img_Emb_pro 'type2-2-vgg-sum' \
- 
+```
+
+## Applications  
+
+### 💡Single-Editing
+
+ ![teaser](assets/fig-single-0318.jpg)
+
+### 💡Multi-Editing
+
+ ![teaser](assets/fig-multi-0318.jpg)
